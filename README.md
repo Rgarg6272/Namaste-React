@@ -30,3 +30,8 @@
 # React Fiber
 
 - https://github.com/acdlite/react-fiber-architecture
+
+# Routing in web apps
+
+- Client side routing - Its the routing when we don't make any network call
+- Server side routing - Its the routing when we make any network call and get the data
