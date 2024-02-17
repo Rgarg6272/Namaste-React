@@ -3,6 +3,7 @@ import RestaurantCard from "./RestaurantCard";
 import { useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../Utils/useOnlineStatus";
  
 const Body = () => {
   // Local state variable - Super powerful variable
@@ -34,6 +35,10 @@ const Body = () => {
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+
+  const onlineStatus = useOnlineStatus();
+
+  if(onlineStatus === false) return <h1>Looks like you're offline. Please check your internet connection.</h1>
  
   if (listOfRestaurants.length === 0) {
     return <Shimmer />;
