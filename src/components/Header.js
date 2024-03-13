@@ -3,12 +3,16 @@ import { LOGO_URL } from "../Utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../Utils/useOnlineStatus";
 import UserContext from "../Utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
   const onlineStatus = useOnlineStatus();
   const { loggedInUser } = useContext(UserContext);
-  //console.log(loggedInUser);
+
+  //subscribing to the store using a selector
+  const cart = useSelector((store) => store.cart.items);
+  console.log(cart);
 
   const nameChange = () => {
     btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
@@ -38,6 +42,9 @@ const Header = () => {
           </li>
           <li className="px-4">
             <Link to="/grocery">Grocery</Link>
+          </li>
+          <li className="px-4 font-bold text-xl">
+            <Link to="/cart">Cart ({cart.length} Items)</Link>
           </li>
           <button className="login-btn" onClick={nameChange}>
             {btnName}
