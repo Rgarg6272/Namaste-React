@@ -8,13 +8,10 @@ import UserContext from "../Utils/UserContext";
 import User from "./User";
 
 const Body = () => {
-  // Local state variable - Super powerful variable
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
   const { loggedInUser, setUserName } = useContext(UserContext);
-
-  // console.log("Body rendered ", listOfRestaurants);
 
   useEffect(() => {
     fetchData();
@@ -63,15 +60,12 @@ const Body = () => {
           <button
             className="px-4 py-2 bg-green-100 m-4 rounded-lg"
             onClick={() => {
-              // Filter the restraunt cards and update the UI
-              // searchText
-              console.log(searchText);
-
               const filteredRestaurant = listOfRestaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
 
               setFilteredRestaurant(filteredRestaurant);
+              setSearchText("");
             }}
           >
             Search

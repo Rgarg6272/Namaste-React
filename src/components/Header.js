@@ -12,7 +12,7 @@ const Header = () => {
 
   //subscribing to the store using a selector
   const cart = useSelector((store) => store.cart.items);
-  console.log(cart);
+  //console.log(cart);
 
   const nameChange = () => {
     btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
